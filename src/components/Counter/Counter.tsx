@@ -5,9 +5,13 @@ function Counter() {
 
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
+      <h3>You clicked {count} times</h3>
+      <button className="btn btn-primary" onClick={() => setCount(count + 1)}>
+        +
+      </button>
+      <button className="btn btn-success" onClick={() => setCount(count - 1)}>
+        -
+      </button>
     </div>
   );
 }
