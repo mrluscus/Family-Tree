@@ -1,11 +1,13 @@
-import React from "react";
-import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import './Navbar.css';
+import {NavLink} from 'react-router-dom';
+import Icon, {IconName} from '../../Icon/Icon';
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
       <NavLink className="navbar-brand" to="/">
+        <Icon name={IconName.Tree} size={30} style={{marginRight: '10px'}} />
         Family Tree
       </NavLink>
 
@@ -19,12 +21,7 @@ function Navbar() {
       </div>
 
       <form className="form-inline my-2 my-lg-0 ml-auto">
-        <input
-          className="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
+        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
           Search
         </button>
