@@ -1,9 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace FamilyTree.Data.Models
 {
-  public class RelativeType : Entity
-  {
-    public string Code { get; set; }
+    [Table("RelativeType")]
+    public class RelativeType : Entity
+    {
+        [Required]
+        public string Code { get; set; }
 
-    public string Name { get; set; }
-  }
+        [Required]
+        public string Name { get; set; }
+    }
 }

@@ -1,10 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace FamilyTree.Data.Models
 {
-  public class Photo : Entity
-  {
-    public string Path { get; set; }
+    [Table("Photo")]
+    public class Photo : Entity
+    {
+        [Required]
+        public string Path { get; set; }
 
-    public string Description { get; set; }
-
-  }
+        public string Description { get; set; }
+    }
 }
