@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FamilyTree.Data.Dto;
+using FamilyTree.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FamilyTree.Web.Controllers
 {
@@ -7,36 +11,35 @@ namespace FamilyTree.Web.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        // GET: api/Person
+        private IPersonService _personService;
+
+        public PersonController(IPersonService personService)
+        {
+            _personService = personService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public async Task<List<PersonDto>> Get()
+            => await _personService.GetAllAsync();
 
-        // GET: api/Person/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        [HttpGet("{id}")]
+        public async Task<PersonDto> Get(int id)
+            => await _personService.GetAsync(id);
 
-        // POST: api/Person
         [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        public async Task Post([FromBody] PersonDto dto, CancellationToken cancellationToken)
+        => await _personService.SaveAsync(dto, cancellationToken);
 
-        // PUT: api/Person/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        public async Task Put(int id, [FromBody] PersonDto dto, CancellationToken cancellationToken)
+            => await _personService.SaveAsync(dto, cancellationToken);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        [HttpDelete, Route("{id}")]
+        public async Task Delete(int id, CancellationToken cancellationToken)
+            => await _personService.DeleteAsync(id, cancellationToken);
+
+        [HttpPost, Route("DeleteByIds")]
+        public async Task DeleteByIds(List<int> ids, CancellationToken cancellationToken)
+        => await _personService.DeleteAsync(ids, cancellationToken);
     }
 }

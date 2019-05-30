@@ -1,4 +1,6 @@
 ﻿using FamilyTree.Data;
+using FamilyTree.Services.Services;
+using FamilyTree.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +30,7 @@ namespace FamilyTree.Web
 
             services
                 .AddDbContext<FamilyTreeDbContext>(options => options.UseNpgsql(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient)
+                .AddTransient<IPersonService, PersonService>()
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
