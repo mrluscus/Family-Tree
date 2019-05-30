@@ -32,3 +32,4 @@ backend/.vscode
 backend/.vs
 backend/FamilyTree.Web/appsettings.Development.json
 frontend/.vscode
+/backend/FamilyTree.Web/FamilyTree.Web.csproj.user

@@ -1,10 +1,8 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using FamilyTree.Data.Models;
 
-namespace FamilyTree.Data.Models
+namespace FamilyTree.Data.Dto
 {
-    [Table("Gender")]
-    public class Gender : Entity
+    public class GenderDto : EntityDto
     {
         /// <summary>
         /// Gets or sets the code.
@@ -12,7 +10,6 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The code.
         /// </value>
-        [Required]
         public string Code { get; set; }
 
         /// <summary>
@@ -21,7 +18,12 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The name.
         /// </value>
-        [Required]
         public string Name { get; set; }
+
+        public GenderDto(Gender gender)
+        {
+            Code = gender.Code;
+            Name = gender.Name;
+        }
     }
 }

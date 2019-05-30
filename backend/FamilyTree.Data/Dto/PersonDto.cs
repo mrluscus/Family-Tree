@@ -1,21 +1,18 @@
+﻿using FamilyTree.Data.Models;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
-namespace FamilyTree.Data.Models
+namespace FamilyTree.Data.Dto
 {
-    [Table("Person")]
-    public class Person : Entity
+    public class PersonDto : EntityDto
     {
-        public Person()
-        {
-        }
-
         /// <summary>
         /// Gets or sets the first name.
         /// </summary>
         /// <value>
         /// The first name.
         /// </value>
+        [DataMember]
         public string FirstName { get; set; }
 
         /// <summary>
@@ -24,6 +21,7 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The last name.
         /// </value>
+        [DataMember]
         public string LastName { get; set; }
 
         /// <summary>
@@ -32,6 +30,7 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The name of the patronymic.
         /// </value>
+        [DataMember]
         public string PatronymicName { get; set; }
 
         /// <summary>
@@ -40,6 +39,7 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The birth date.
         /// </value>
+        [DataMember]
         public DateTime? BirthDate { get; set; }
 
         /// <summary>
@@ -48,6 +48,7 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The death date.
         /// </value>
+        [DataMember]
         public DateTime? DeathDate { get; set; }
 
         /// <summary>
@@ -56,6 +57,7 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The biography.
         /// </value>
+        [DataMember]
         public string Biography { get; set; }
 
         /// <summary>
@@ -64,14 +66,31 @@ namespace FamilyTree.Data.Models
         /// <value>
         /// The gender identifier.
         /// </value>
-        [ForeignKey("Gender")]
+        [DataMember]
         public int GenderId { get; set; }
+
         /// <summary>
         /// Gets or sets the gender.
         /// </summary>
         /// <value>
         /// The gender.
         /// </value>
-        public Gender Gender { get; set; }
+        public GenderDto Gender { get; set; }
+
+        public PersonDto()
+        {
+        }
+
+        public PersonDto(Person person)
+        {
+            FirstName = person.FirstName;
+            LastName = person.LastName;
+            PatronymicName = person.PatronymicName;
+            BirthDate = person.BirthDate;
+            DeathDate = person.DeathDate;
+            Biography = person.Biography;
+            GenderId = person.GenderId;
+            Gender = new GenderDto(person.Gender);
+        }
     }
 }
