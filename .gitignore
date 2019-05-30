@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+frontend/node_modules
 /.pnp
 .pnp.js
 
@@ -10,6 +10,12 @@
 
 # production
 /build
+backend/FamilyTree.Data/bin
+backend/FamilyTree.Data/obj
+backend/FamilyTree.Services/bin
+backend/FamilyTree.Services/obj
+backend/FamilyTree.Web/bin
+backend/FamilyTree.Web/obj
 
 # misc
 .DS_Store
@@ -21,3 +27,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+backend/.vscode
+backend/.vs
+backend/FamilyTree.Web/appsettings.Development.json
+frontend/.vscode
