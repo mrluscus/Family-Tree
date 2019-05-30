@@ -7,7 +7,7 @@ namespace FamilyTree.Data.Models
     public class Person : Entity
     {
         public string FirstName { get; set; }
-
+         
         public string LastName { get; set; }
 
         public string PatronymicName { get; set; }
