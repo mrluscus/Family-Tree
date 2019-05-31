@@ -44,7 +44,8 @@ namespace FamilyTree.Web
                 //Apply database migrations. (It will create DB if not exist)
                 using (var dbCnt = provider.GetService<FamilyTreeDbContext>())
                 {
-                    dbCnt.Database.Migrate();
+                    if (!dbCnt.Database.EnsureCreated())
+                        dbCnt.Database.Migrate();
                 }
             }
             catch (Exception ex)
