@@ -8,15 +8,15 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
       <NavLink className="navbar-brand" to="/">
         <Icon name={IconName.Tree} size={30} style={{marginRight: '10px'}} />
-        Family Tree
+        Home
       </NavLink>
 
       <div className="d-flex">
-        <NavLink className="nav-link" to="/">
-          Home
+        <NavLink className="nav-link" to="/my-family">
+          My Family
         </NavLink>
-        <NavLink className="nav-link" to="/counter/">
-          Counter
+        <NavLink className="nav-link" to="/photo-album/">
+          Photo Album
         </NavLink>
       </div>
 
