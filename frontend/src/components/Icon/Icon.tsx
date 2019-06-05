@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {HTMLAttributes} from 'react';
+
 import {ReactComponent as Tree} from './tree-2.svg';
+import {ReactComponent as NotFound} from './not-found.svg';
 
 export enum IconName {
-  Tree
+  Tree,
+  NotFound
 }
 
 const ICONS_MAP: {[key: number]: any} = {
-  [IconName.Tree]: Tree
+  [IconName.Tree]: Tree,
+  [IconName.NotFound]: NotFound
 };
 
 export interface IProps extends HTMLAttributes<unknown> {

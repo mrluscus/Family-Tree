@@ -1,14 +1,16 @@
 import React from 'react';
 import Navbar from '../components/Common/Navbar/Navbar';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch, Router} from 'react-router-dom';
 import Home from '../components/AppLayout/Home/Home';
 import PhotoAlbum from '../components/AppLayout/PhotoAlbum/PhotoAlbum';
+import NotFound from '../components/AppLayout/NotFound/NotFound';
 import MyFamily from '../components/AppLayout/MyFamily/MyFamily';
 import '../index.css';
+import history from '../helpers/History';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <div className="d-flex flex-column w-100">
         <Navbar />
 
@@ -17,9 +19,10 @@ export default function App() {
             <Route path="/" exact component={Home} />
             <Route path="/my-family/" component={MyFamily} />
             <Route path="/photo-album/" component={PhotoAlbum} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
